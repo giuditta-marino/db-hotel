@@ -1,0 +1,2 @@
+SELECT * FROM `ospiti` WHERE `document_type` = 'CI';
+
