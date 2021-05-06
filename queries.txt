@@ -1,2 +1,12 @@
 SELECT * FROM `ospiti` WHERE `document_type` = 'CI';
 
+SELECT * FROM `ospiti` WHERE `date_of_birth` > '1988-01-01';
+
+SELECT * FROM `ospiti` WHERE `date_of_birth` < '2001-05-06';
+
+SELECT * FROM `ospiti` WHERE `name` LIKE 'D%';
+
+SELECT SUM(price) FROM `pagamenti` WHERE `status` = 'accepted';
+
+SELECT MAX(price) FROM `pagamenti`;
+
