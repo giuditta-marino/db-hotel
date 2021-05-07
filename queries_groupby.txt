@@ -1,0 +1,19 @@
+1) SELECT COUNT(id)
+FROM `ospiti`
+GROUP BY YEAR(`date_of_birth`);
+
+2) SELECT SUM(price)
+FROM `pagamenti`
+GROUP BY `status`;
+
+3) SELECT COUNT(id) FROM `prenotazioni` GROUP BY `stanza_id`;
+
+4) SELECT HOUR(`created_at`), COUNT(`id`)
+FROM `prenotazioni`
+GROUP BY HOUR(`created_at`)
+ORDER BY COUNT(`id`) DESC;
+
+5) SELECT COUNT(`ospite_id`)
+FROM `prenotazioni_has_ospiti`
+GROUP BY `ospite_id`
+ORDER BY COUNT(`ospite_id`) DESC LIMIT 2;                 
