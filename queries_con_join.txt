@@ -1,0 +1,17 @@
+1)
+SELECT COUNT(`prenotazioni_has_ospiti`.`prenotazione_id`) AS `n_prenotazioni`, `ospiti`.`name`, `ospiti`.`lastname` FROM `prenotazioni_has_ospiti` INNER JOIN `ospiti` ON `ospiti`.`id` = `prenotazioni_has_ospiti`.`ospite_id` GROUP BY `prenotazioni_has_ospiti`.`ospite_id` HAVING `n_prenotazioni` > 2;
+
+2) 
+SELECT `prenotazioni_has_ospiti`.`prenotazione_id`, `ospiti`.* FROM `prenotazioni_has_ospiti` INNER JOIN `ospiti` ON `prenotazioni_has_ospiti`.`ospite_id` = `ospiti`.`id`;
+
+3)
+SELECT `prenotazioni`.`id`, `pagamenti`.`price`, `paganti`.`name`, `paganti`.`lastname` FROM `prenotazioni` LEFT JOIN `pagamenti` ON `prenotazioni`.`id` = `pagamenti`.`prenotazione_id` INNER JOIN `paganti` ON `pagamenti`.`pagante_id` = `paganti`.`id` WHERE MONTH(`prenotazioni`.`created_at`) = 5 AND YEAR(`prenotazioni`.`created_at`) = 2018;
+
+4)
+SELECT SUM(`pagamenti`.`price`) FROM `stanze` INNER JOIN `prenotazioni` ON `stanze`.`id` = `prenotazioni`.`stanza_id` INNER JOIN `pagamenti` ON `prenotazioni`.`id` = `pagamenti`.`prenotazione_id` WHERE `stanze`.`floor` = 1;
+
+5)
+SELECT `prenotazioni`.`id`, `prenotazioni_has_ospiti`.`ospite_id`, `ospiti`.`name`, `ospiti`.`lastname`, `paganti`.`address`, `pagamenti`.`price`, `pagamenti`.`status` FROM `prenotazioni` INNER JOIN `prenotazioni_has_ospiti` ON `prenotazioni_has_ospiti`.`prenotazione_id` = `prenotazioni`.`id`  INNER JOIN `ospiti` ON `ospiti`.`id` = `prenotazioni_has_ospiti`.`ospite_id` INNER JOIN `paganti` ON `paganti`.`ospite_id` = `ospiti`.`id` INNER JOIN `pagamenti` ON `prenotazioni`.`id` = `pagamenti`.`prenotazione_id` WHERE `prenotazioni`.`id` = 7;
+
+6)
+SELECT * FROM `stanze` LEFT JOIN `prenotazioni` ON `prenotazioni`.`stanza_id` = `stanze`.`id` WHERE `prenotazioni`.`stanza_id` IS NULL;
