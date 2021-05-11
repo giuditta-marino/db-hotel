@@ -19,7 +19,7 @@ var app = new Vue({
     getById: function (id) {
       axios.get(`http://localhost/db-hotel/lista_stanze_vue/api/stanze.php?id=${id}`)
       .then((response)=> {
-        this.stanze= response.data.response;
+        this.stanza= response.data.response;
       });
     }
   }

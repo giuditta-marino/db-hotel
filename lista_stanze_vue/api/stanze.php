@@ -9,7 +9,6 @@
 
     $stmt = $conn->prepare("SELECT * FROM stanze WHERE id = ?");
     $stmt->bind_param("i", $id);
-    $stmt->execute();
 
     // set parameters and execute
     $stmt->execute();
@@ -19,7 +18,7 @@
       $result[] = $row;
     }
 
-    echo json_enchode([
+    echo json_encode([
       "response" => $result,
       "success" => true
     ]);
@@ -37,7 +36,7 @@
       }
     }
 
-    echo json_enchode([
+    echo json_encode([
       "response" => $result,
       "success" =>true
       ]);
